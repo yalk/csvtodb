@@ -9,11 +9,11 @@ import pymysql
 conn = pymysql.connect(host='localhost', port=3306, user='root', passwd='', db='ENTER DATABASE NAME HERE')
 cur = conn.cursor()
 
-with open('ENTER FILENAME HERE.csv') as csvfile:
+with open('sample.csv') as csvfile:
 	reader = csv.DictReader(csvfile)
 	i=0
 	for row in reader:
-		query = "insert into TABLENAME (column1, column2, column3) VALUES ('"+row['heading1']+"', '"+row['heading2']+"', '"+row['heading3']+"')"
+		query = "insert into TABLENAME (column1, column2, column3) VALUES ('"+row['id']+"', '"+row['age']+"', '"+row['fav_no']+"', '"+row['something_else']+"')"
 		cur.execute(query)
 		i+=1
 		if(i%1000==0):
